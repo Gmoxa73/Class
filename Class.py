@@ -7,7 +7,7 @@ def all_mid_bal_stud(list_stud, course):
         if isinstance(stud, Student) and course in stud.courses_in_progress or stud.finished_courses:
             all_bal += stud.mid_bal()
             all_bal_stud = all_bal/(num + 1)
-    return f'Средняя оценка студентов на курсе {course}: {all_bal_stud}'
+    return f'Средняя оценка студентов на курсе {course}: {all_bal_stud}\n'
 
 def all_mid_bal_lec(list_lec, course):
     all_bal_lec = 0
@@ -16,7 +16,7 @@ def all_mid_bal_lec(list_lec, course):
         if isinstance(lec, Lecturer) and course in lec.courses_attached:
             all_bal += lec.mid_bal()
             all_bal_lec = all_bal/(num + 1)
-    return f'Средняя оценка лекторов на курсе {course}: {all_bal_lec}'
+    return f'Средняя оценка лекторов на курсе {course}: {all_bal_lec}\n'
 
 
 @total_ordering
@@ -42,10 +42,10 @@ class Student:
             return 'Ошибка'
 
     def __eq__(self, other):
-        return self.mid_bal() == other.mid_bal()
+        return f'Результат сравнения: {self.mid_bal() == other.mid_bal()}\n'
 
     def __lt__(self, other):
-        return self.mid_bal() < other.mid_bal()
+        return f'Результат сравнения: {self.mid_bal() < other.mid_bal()}\n'
 
     def mid_bal(self):
         a = 0
@@ -74,10 +74,10 @@ class Lecturer(Mentor):
         self.grades = {}
 
     def __eq__(self, other):
-        return self.mid_bal() == other.mid_bal()
+        return f'Результат сравнения: {self.mid_bal() == other.mid_bal()}\n'
 
     def __lt__(self, other):
-        return self.mid_bal() < other.mid_bal()
+        return f'Результат сравнения: {self.mid_bal() < other.mid_bal()}\n'
 
     def mid_bal(self):
         a = 0
@@ -115,8 +115,6 @@ best_student.courses_in_progress += ['Python']
 best_student.courses_in_progress += ['C++']
 best_student.finished_courses += ['Java']
 
-
-
 bad_student = Student('Bill', 'Sak', 'male')
 bad_student.courses_in_progress += ['Python']
 
@@ -125,9 +123,9 @@ cool_reviewer.courses_attached += ['Python']
 
 cool_lector = Lecturer('Bill', 'Weeks')
 cool_lector.courses_attached += ['Python']
+
 cl_lector = Lecturer('Mik', 'Will')
 cl_lector.courses_attached += ['Python']
-
 
 cool_reviewer.rate_hw(best_student, 'Python', 3)
 cool_reviewer.rate_hw(best_student, 'Python', 10)
@@ -136,7 +134,6 @@ cool_reviewer.rate_hw(best_student, 'Python', 10)
 cool_reviewer.rate_hw(bad_student, 'Python', 10)
 cool_reviewer.rate_hw(bad_student, 'Python', 9)
 cool_reviewer.rate_hw(bad_student, 'Python', 9)
-
 
 best_student.rate_hwl(cool_lector,'Python',8)
 best_student.rate_hwl(cool_lector,'Python',10)
@@ -148,7 +145,6 @@ bad_student.rate_hwl(cl_lector,'Python',4)
 
 stud_list = [best_student, bad_student]
 lec_list = [cool_lector, cl_lector]
-
 
 print(best_student)
 print(cool_reviewer)
