@@ -42,10 +42,10 @@ class Student:
             return 'Ошибка'
 
     def __eq__(self, other):
-        return f'Результат сравнения: {self.mid_bal() == other.mid_bal()}\n'
+        return f'Результат сравнения студентов: {self.mid_bal() == other.mid_bal()}\n'
 
     def __lt__(self, other):
-        return f'Результат сравнения: {self.mid_bal() < other.mid_bal()}\n'
+        return f'Результат сравнения студентов: {self.mid_bal() < other.mid_bal()}\n'
 
     def mid_bal(self):
         a = 0
@@ -74,10 +74,10 @@ class Lecturer(Mentor):
         self.grades = {}
 
     def __eq__(self, other):
-        return f'Результат сравнения: {self.mid_bal() == other.mid_bal()}\n'
+        return f'Результат сравнения лекторов: {self.mid_bal() == other.mid_bal()}\n'
 
     def __lt__(self, other):
-        return f'Результат сравнения: {self.mid_bal() < other.mid_bal()}\n'
+        return f'Результат сравнения лекторов: {self.mid_bal() < other.mid_bal()}\n'
 
     def mid_bal(self):
         a = 0
